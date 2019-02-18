@@ -1,4 +1,4 @@
-package com.denofdevelopers.blogdbmanager_partone;
+package com.denofdevelopers.blogdbmanager_parttwo;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
