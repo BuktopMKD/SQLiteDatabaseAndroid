@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">BlogDBManager - Part One</string>
+    <string name="app_name">BlogDBManager - Part Two</string>
+
+    <!-- Main Activity -->
+    <string name="person_name">Name</string>
+    <string name="person_last_name">Last Name</string>
+    <string name="person_date_of_birth">Date of Birth</string>
+    <string name="add_record">Add record</string>
+    <string name="gender">Gender</string>
 </resources>
