@@ -7,4 +7,5 @@
     <string name="person_date_of_birth">Date of Birth</string>
     <string name="add_record">Add record</string>
     <string name="gender">Gender</string>
+    <string name="view_all">View all</string>
 </resources>

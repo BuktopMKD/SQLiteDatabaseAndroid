@@ -137,4 +137,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/editGender" />
 
+    <Button
+        android:id="@+id/viewAll"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/view_all"
+        app:layout_constraintEnd_toEndOf="@id/addButton"
+        app:layout_constraintStart_toStartOf="@id/addButton"
+        app:layout_constraintTop_toBottomOf="@id/addButton" />
+
 </android.support.constraint.ConstraintLayout>

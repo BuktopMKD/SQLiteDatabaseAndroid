@@ -1,5 +1,6 @@
 package com.denofdevelopers.blogdbmanager_parttwo;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -45,5 +46,13 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
         }
+    }
+    // Simple AlertDialog for showing the data to the User
+    public void showDialogWithDbData(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
     }
 }
