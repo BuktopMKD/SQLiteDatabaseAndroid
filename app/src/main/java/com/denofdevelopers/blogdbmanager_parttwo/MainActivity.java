@@ -1,5 +1,6 @@
 package com.denofdevelopers.blogdbmanager_parttwo;
 
+import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,6 +48,27 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
         }
     }
+
+    @OnClick(R.id.viewAll)
+    public void onViewAllClick() {
+        Cursor data = dataBase.getAllData();
+        if (data.getCount() == 0) {
+            showDialogWithDbData("Error", "No data found");
+        } else {
+            // String appending
+            StringBuilder stringBuilder = new StringBuilder();
+            while (data.moveToNext()) {
+                stringBuilder.append("ID: ").append(data.getString(0)).append("\n");
+                stringBuilder.append("NAME: ").append(data.getString(1)).append("\n");
+                stringBuilder.append("LAST NAME: ").append(data.getString(2)).append("\n");
+                stringBuilder.append("DATE OF BIRTH: ").append(data.getString(3)).append("\n\n");
+            }
+
+            // Show all data in Alert Dialog
+            showDialogWithDbData( "Data", stringBuilder.toString());
+        }
+    }
+
     // Simple AlertDialog for showing the data to the User
     public void showDialogWithDbData(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
