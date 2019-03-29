@@ -4,7 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
@@ -65,9 +67,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_4_DATE_OF_BIRTH, dateOfBirth);
         contentValues.put(COL_5_GENDER, gender);
 
-        // ID = ? - where (column) to be updated and String[] what to be updated (inserted id)
-        // ? mark will be replaced with the String[]{id}
-        sqLiteDatabase.update(STUDENT_TABLE, contentValues, "ID = ?", new String[]{id});
-        return true;
+        try {
+            // ID = ? - where (column) to be updated and String[] what to be updated (inserted id)
+            // ? mark will be replaced with the String[]{id}
+            sqLiteDatabase.update(STUDENT_TABLE, contentValues, "ID = ?", new String[]{id});
+            return true;
+        } catch (SQLiteException e) {
+            Log.d("SQLite", e.getMessage());
+            return false;
+        }
     }
 }
