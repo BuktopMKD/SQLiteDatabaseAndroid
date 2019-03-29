@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         if (data.getCount() == 0) {
             showDialogWithDbData("Error", "No data found");
         } else {
-            // String appending
             StringBuilder stringBuilder = new StringBuilder();
             while (data.moveToNext()) {
                 stringBuilder.append("ID: ").append(data.getString(0)).append("\n");
@@ -63,13 +62,10 @@ public class MainActivity extends AppCompatActivity {
                 stringBuilder.append("LAST NAME: ").append(data.getString(2)).append("\n");
                 stringBuilder.append("DATE OF BIRTH: ").append(data.getString(3)).append("\n\n");
             }
-
-            // Show all data in Alert Dialog
             showDialogWithDbData( "Data", stringBuilder.toString());
         }
     }
 
-    // Simple AlertDialog for showing the data to the User
     public void showDialogWithDbData(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
