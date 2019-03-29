@@ -54,4 +54,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         return sqLiteDatabase.rawQuery("SELECT * FROM " + STUDENT_TABLE, null);
     }
+
+    // Update data
+    public boolean updateData(String id, String name, String lastName, String dateOfBirth, String gender) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_1_ID, id);
+        contentValues.put(COL_2_NAME, name);
+        contentValues.put(COL_3_LAST_NAME, lastName);
+        contentValues.put(COL_4_DATE_OF_BIRTH, dateOfBirth);
+        contentValues.put(COL_5_GENDER, gender);
+
+        // ID = ? - where (column) to be updated and String[] what to be updated (inserted id)
+        // ? mark will be replaced with the String[]{id}
+        sqLiteDatabase.update(STUDENT_TABLE, contentValues, "ID = ?", new String[]{id});
+        return true;
+    }
 }
