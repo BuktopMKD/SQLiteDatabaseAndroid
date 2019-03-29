@@ -73,4 +73,9 @@ public class MainActivity extends AppCompatActivity {
         builder.setMessage(message);
         builder.show();
     }
+
+    @OnClick(R.id.update)
+    public void onUpdateClick() {
+        
+    }
 }
