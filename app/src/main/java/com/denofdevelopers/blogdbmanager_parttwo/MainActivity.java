@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     EditText editDateOfBirth;
     @BindView(R.id.editGender)
     EditText editGender;
+    @BindView(R.id.editId)
+    EditText editId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 stringBuilder.append("LAST NAME: ").append(data.getString(2)).append("\n");
                 stringBuilder.append("DATE OF BIRTH: ").append(data.getString(3)).append("\n\n");
             }
-            showDialogWithDbData( "Data", stringBuilder.toString());
+            showDialogWithDbData("Data", stringBuilder.toString());
         }
     }
 
@@ -76,6 +78,20 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.update)
     public void onUpdateClick() {
-        
+        if (!TextUtils.isEmpty(editName.getText().toString())
+                && !TextUtils.isEmpty(editLastName.getText().toString())
+                && !TextUtils.isEmpty(editDateOfBirth.getText().toString())
+                && !TextUtils.isEmpty(editId.getText().toString())
+                && !TextUtils.isEmpty(editGender.getText().toString())) {
+            boolean isUpdated = dataBase.updateData(editId.getText().toString(), editName.getText().toString(), editLastName.getText().toString(), editDateOfBirth.getText().toString(), editGender.getText().toString());
+            if (isUpdated) {
+                Toast.makeText(this, "Record with id " + editId.getText().toString() + " updated", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Record with id " + editId.getText().toString() + " NOT updated!", Toast.LENGTH_SHORT).show();
+            }
+
+        } else {
+            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+        }
     }
 }
